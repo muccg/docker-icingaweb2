@@ -19,13 +19,13 @@ RUN apt-get update \
   icingaweb2 \
   && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-# Set a default timezone so the icingaweb2 setup wizard can run
-RUN sed -i 's/;date.timezone =/date.timezone = "UTC"/' /etc/php5/apache2/php.ini
-
 COPY supervisord/supervisord-icingaweb2.conf /etc/supervisor/conf.d/supervisord-icingaweb2.conf
+COPY docker-entrypoint.sh /docker-entrypoint.sh
+RUN chmod +x /docker-entrypoint.sh
 
 EXPOSE 80 443
 
 VOLUME [ '/etc/icingaweb2', '/var/log/apache2' ]
 
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/supervisord.conf", "-n"]
+ENTRYPOINT ["/docker-entrypoint.sh"]
+CMD "supervisord"
