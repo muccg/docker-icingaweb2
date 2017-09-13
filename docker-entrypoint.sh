@@ -4,7 +4,7 @@ set -e
 
 
 function defaults {
-    : ${PHP_TIMEZONE:=UTC}
+    : "${PHP_TIMEZONE:=UTC}"
 
     echo "PHP_TIMEZONE is ${PHP_TIMEZONE}"
 
@@ -24,6 +24,6 @@ if [ "$1" = 'supervisord' ]; then
 fi
 
 echo "[RUN]: Builtin command not provided [supervisord]"
-echo "[RUN]: $@"
+echo "[RUN]: $*"
 
 exec "$@"

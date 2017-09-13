@@ -1,5 +1,5 @@
-FROM debian:wheezy
-MAINTAINER https://github.com/muccg
+FROM debian:jessie
+LABEL maintainer "https://github.com/muccg"
 
 ENV DEBIAN_FRONTEND noninteractive
 
