@@ -13,7 +13,7 @@ RUN apt-get update \
   && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN wget --quiet -O - http://packages.icinga.org/icinga.key | apt-key add -
-RUN echo "deb http://packages.icinga.org/debian icinga-wheezy-snapshots main" >> /etc/apt/sources.list
+RUN echo "deb http://packages.icinga.org/debian icinga-jessie-snapshots main" >> /etc/apt/sources.list
 RUN apt-get update \
   && apt-get -y install \
   icingaweb2 \
