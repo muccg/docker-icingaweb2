@@ -1,4 +1,4 @@
-FROM debian:jessie
+FROM debian:stretch
 LABEL maintainer "https://github.com/muccg"
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -7,13 +7,14 @@ RUN apt-get update \
   && apt-get -y install --no-install-recommends \
   apache2 \
   ca-certificates \
+  gnupg2 \
   mysql-client \
   wget \
   supervisor \
   && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN wget --quiet -O - http://packages.icinga.org/icinga.key | apt-key add -
-RUN echo "deb http://packages.icinga.org/debian icinga-wheezy-snapshots main" >> /etc/apt/sources.list
+RUN echo "deb http://packages.icinga.org/debian icinga-stretch-snapshots main" >> /etc/apt/sources.list
 RUN apt-get update \
   && apt-get -y install \
   icingaweb2 \

@@ -9,7 +9,7 @@ services:
   prod:
     build:
       context: ./
-    image: muccg/icingaweb2:jessie
+    image: muccg/icingaweb2:stretch
 
   latest:
     extends:
